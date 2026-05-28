@@ -51,32 +51,32 @@
   </ion-header>
 
   <div class="container">
-    <h2>Buscar Libros</h2>
+    <h2>Buscar Juegos</h2>
     <ion-item>
-      <ion-label position="floating">Título del libro</ion-label>
+      <ion-label position="floating">Título del juego</ion-label>
       <ion-input [(ngModel)]="textoBusqueda"></ion-input>
     </ion-item>
-    <ion-button expand="block" (click)="obtenerLibros()">Buscar</ion-button>
+    <ion-button expand="block" (click)="obtenerJuegos()">Buscar</ion-button>
 
-    <ion-card *ngFor="let libro of libros">
+    <ion-card *ngFor="let juego of juegos">
 
-      <img
-        *ngIf="libro.cover_i"
-        [src]="'https://covers.openlibrary.org/b/id/' + libro.cover_i + '-L.jpg'" style="width: 50px; margin-left: 10px;"
-      />
+      <img *ngIf="juego.thumbnail" [src]="juego.thumbnail" style="width: 100px; margin-left: 10px;" />
 
       <ion-card-header>
         <ion-card-title>
-          {{ libro.title }}
+          {{ juego.title }}
         </ion-card-title>
 
         <ion-card-subtitle>
-          {{ libro.author_name?.[0] }}
+          {{ juego.genre }} - {{ juego.platform }}
         </ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
-        Año: {{ libro.first_publish_year }}
+        {{ juego.short_description }}
+        <div style="margin-top:8px; font-size:0.9em; color:var(--ion-color-medium);">
+          Desarrollador: {{ juego.developer }} • Lanzamiento: {{ juego.release_date }}
+        </div>
       </ion-card-content>
 
     </ion-card>
