@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButton, IonList, IonItem, IonInput, IonLabel, IonCard, IonCardContent,IonCardHeader, IonCardTitle, IonCardSubtitle, IonSpinner } from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http'; // Importa HttpClientModule si necesitas hacer peticiones HTTP
-
+//Implementacion de api
 
 @Component({
   selector: 'app-apilibros',
