@@ -4,10 +4,11 @@ import {
   IonList, IonItem, IonLabel, IonButton, IonIcon,
   IonFab, IonFabButton, IonBackButton
 } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { VideojuegosService, Videojuego } from '../../services/videojuegos.page';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
   selector: 'app-videojuegos',
@@ -31,7 +32,7 @@ export class VideojuegosPage implements OnInit {
   // imagen
   imagenVisible: number | null = null;
 
-  constructor(private videojuegosService: VideojuegosService, private sanitizer: DomSanitizer) {}
+  constructor(private videojuegosService: VideojuegosService, private sanitizer: DomSanitizer, private firebaseService: FirebaseService, private router: Router) {}
 
   ngOnInit() {
     this.cargar();
@@ -107,5 +108,11 @@ export class VideojuegosPage implements OnInit {
     return this.sanitizer
       .bypassSecurityTrustResourceUrl(embedUrl);
 
+  }
+
+  // Logout
+  async cerrarSesion() {
+    await this.firebaseService.logout();
+    this.router.navigate(['/login']);
   }
 }

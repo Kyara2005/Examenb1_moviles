@@ -6,17 +6,6 @@ import { environment } from '../../environments/environment';
     providedIn: 'root'
 })
 export class SupabaseService {
-    // Para login y registro
-    public supabase: SupabaseClient = createClient(
-        environment.supabaseUrlLogin,
-        environment.supabaseKeyLogin,
-        {
-            auth: {
-                storageKey: 'supabase-auth-client',
-            }
-        }
-    );
-
     // Para la base de datos
     public supabaseDB: SupabaseClient = createClient(
         environment.supabaseUrl,
@@ -29,22 +18,4 @@ export class SupabaseService {
             }
         }
     );
-
-    login(email: string, password: string) {
-        return this.supabase.auth.signInWithPassword({
-        email,
-        password
-        });
-    }
-
-    register(email: string, password: string) {
-        return this.supabase.auth.signUp({
-        email,
-        password
-        });
-    }
-
-    logout() {
-        return this.supabase.auth.signOut();
-    }
 }
