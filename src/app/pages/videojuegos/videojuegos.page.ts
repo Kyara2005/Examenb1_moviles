@@ -4,10 +4,9 @@ import {
   IonHeader, IonToolbar, IonTitle, IonContent,
   IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton
 } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { VideojuegosService, Videojuego } from '../../services/videojuegos.page';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router, RouterLink } from '@angular/router';
+import { Geolocation } from '@capacitor/geolocation';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-videojuegos',
@@ -16,100 +15,61 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./videojuegos.page.scss'],
   imports: [
     FormsModule,
-    IonHeader, IonToolbar, IonTitle, IonContent,
+    IonHeader, IonToolbar, IonTitle, IonContent, RouterLink,
     IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton
   ]
 })
-export class VideojuegosPage implements OnInit {
+export class VideojuegosPage {
 
-  videojuegos: Videojuego[] = [];
+  constructor(private router: Router, private firebaseService: FirebaseService) {}
 
-  //Variable para el video
-  videoUrl: string = '';
-  // imagen
-  imagenVisible: number | null = null;
+  encuesta = {
+    nombre: '',
+    edad: '',
+    rol: '',
+    videojuego: '',
+    plataforma: '',
+    genero: '',
+    comentario: ''
+  };
 
-  constructor(private videojuegosService: VideojuegosService, private sanitizer: DomSanitizer) {}
+  async enviarEncuesta() {
+    try {
 
-  ngOnInit() {
-    this.cargar();
-  }
+      // 🔥 1. GPS en el momento del click
+      const pos = await Geolocation.getCurrentPosition();
 
-  ionViewWillEnter() {
-    this.cargar();
-  }
+      const latitud = pos.coords.latitude;
+      const longitud = pos.coords.longitude;
 
-  async cargar() {
-    this.videojuegos = await this.videojuegosService.listar();
-  }
+      // 🔥 2. fecha y hora
+      const ahora = new Date();
 
-  async eliminar(id: number) {
-    await this.videojuegosService.eliminar(id);
-    await this.cargar();
-  }
+      // 🔥 3. objeto final
+      const datos = {
+        ...this.encuesta,
+        latitud,
+        longitud,
+        fecha: ahora.toLocaleDateString(),
+        hora: ahora.toLocaleTimeString()
+      };
 
-  //Convertir links de youtube a formato embebido
-  convertirYoutubeUrl(url: string): string {
-    if (url.includes('watch?v=')) {
-      return url.replace('watch?v=', 'embed/');
-    }
-    return url;
-  }
+      console.log('ENCUESTA GUARDADA:', datos);
 
-  // MOSTRAR / OCULTAR VIDEO
-  mostrarVideo(url: string) {
-    // EVITAR LINKS VACIOS
-    if (!url || url === 'sin enlace') {
-      alert('Este videojuego no tiene trailer');
-      return;
-    }
+      // 🔥 4. AQUÍ GUARDAS EN TU BD
+      // await this.servicio.crear(datos);
 
-    if (this.videoUrl === url) {
-      this.videoUrl = '';
-    } else {
-      this.videoUrl = url;
+      alert('Encuesta enviada correctamente con ubicación');
+
+    } catch (error) {
+      console.error('Error GPS:', error);
+      alert('No se pudo obtener la ubicación');
     }
   }
 
-  // MOSTRAR / OCULTAR IMAGEN
-  toggleImagen(id: number) {
-    if (this.imagenVisible === id) {
-      this.imagenVisible = null;
-    } else {
-      this.imagenVisible = id;
-    }
-  }
-
-  //Función para obtener la URL segura del video
-  getVideoUrl(url: string): SafeResourceUrl {
-    // SI NO HAY LINK
-    if (!url || url === 'sin enlace') {
-      return this.sanitizer.bypassSecurityTrustResourceUrl('');
-    }
-
-    let embedUrl = url;
-
-    // FORMATO watch?v=
-    if (url.includes('watch?v=')) {
-      embedUrl = url.replace('watch?v=', 'embed/');
-    }
-
-    // FORMATO youtu.be
-    else if (url.includes('youtu.be/')) {
-      const videoId = url
-        .split('youtu.be/')[1]
-        .split('?')[0];
-      embedUrl = `https://www.youtube.com/embed/${videoId}`;
-    }
-
-    return this.sanitizer
-      .bypassSecurityTrustResourceUrl(embedUrl);
-
-  }
-
-  // Logout
   async cerrarSesion() {
     await this.firebaseService.logout();
     this.router.navigate(['/login']);
   }
-}
+} 
+
