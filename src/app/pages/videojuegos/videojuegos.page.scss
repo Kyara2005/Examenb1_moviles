@@ -1,11 +1,14 @@
-/* Genera un estilo para la página de videojuegos */
-/* Fondo general */
+/* =========================
+   FONDO GENERAL
+========================= */
 ion-content {
   --background: #121212;
   color: #ffffff;
 }
 
-/* Toolbar */
+/* =========================
+   TOOLBAR
+========================= */
 ion-toolbar {
   --background: linear-gradient(90deg, #6a11cb, #2575fc);
   --color: white;
@@ -17,17 +20,27 @@ ion-title {
   font-size: 1.4rem;
 }
 
-/* Tarjetas de videojuegos */
+/* =========================
+   ITEM (CARD VIDEOJUEGOS)
+========================= */
 ion-item {
   margin-bottom: 16px;
   border-radius: 16px;
-  --background: #1e1e1e;
+  --background: #f7f2f2;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   padding: 10px;
   align-items: center;
+  transition: 0.2s ease-in-out;
 }
 
-/* Título */
+/* hover */
+ion-item:hover {
+  transform: scale(1.02);
+}
+
+/* =========================
+   TEXTO
+========================= */
 ion-label h2 {
   font-size: 1.2rem;
   font-weight: bold;
@@ -35,14 +48,15 @@ ion-label h2 {
   margin-bottom: 6px;
 }
 
-/* Texto */
 ion-label p {
   color: #b0b0b0;
   margin: 4px 0;
   font-size: 0.9rem;
 }
 
-/* Imagen */
+/* =========================
+   IMAGEN
+========================= */
 ion-label img {
   display: block;
   margin-top: 10px;
@@ -53,7 +67,9 @@ ion-label img {
   height: 100px;
 }
 
-/* Botones */
+/* =========================
+   BOTONES
+========================= */
 ion-button {
   margin-top: 8px;
   margin-left: 6px;
@@ -61,94 +77,21 @@ ion-button {
   font-weight: bold;
 }
 
-/* Botón editar */
-ion-button[color="warning"] {
-  --background: #ffb300;
-  --color: #000;
-}
-
-/* Botón eliminar */
+/* eliminar */
 ion-button[color="danger"] {
   --background: #e53935;
   --color: white;
 }
 
-/* FAB botón agregar */
-ion-fab-button {
-  --background: linear-gradient(135deg, #00c6ff, #0072ff);
-  --color: white;
-  width: 60px;
-  height: 60px;
-  font-size: 1.8rem;
+/* warning */
+ion-button[color="warning"] {
+  --background: #ffb300;
+  --color: #000;
 }
 
-/* Hover efecto */
-ion-item:hover {
-  transform: scale(1.02);
-  transition: 0.2s ease-in-out;
-}/* Fondo general */
-ion-content {
-  --background: #121212;
-  color: #ffffff;
-}
-
-/* Toolbar */
-ion-toolbar {
-  --background: linear-gradient(90deg, #6a11cb, #2575fc);
-  --color: white;
-}
-
-ion-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-/* Tarjetas de videojuegos */
-ion-item {
-  margin-bottom: 16px;
-  border-radius: 16px;
-  --background: #1e1e1e;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  padding: 10px;
-  align-items: center;
-}
-
-/* Título */
-ion-label h2 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-/* Texto */
-ion-label p {
-  color: #b0b0b0;
-  margin: 4px 0;
-  font-size: 0.9rem;
-}
-
-/* Imagen */
-ion-label img {
-  display: block;
-  margin-top: 10px;
-  border-radius: 12px;
-  border: 2px solid #333;
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-}
-
-/* Botones */
-ion-button {
-  margin-top: 8px;
-  margin-left: 6px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-/* FAB botón agregar */
+/* =========================
+   FAB
+========================= */
 ion-fab-button {
   --background: linear-gradient(135deg, #00c6ff, #0072ff);
   width: 60px;
@@ -156,12 +99,9 @@ ion-fab-button {
   font-size: 1.8rem;
 }
 
-/* Hover efecto */
-ion-item:hover {
-  transform: scale(1.02);
-  transition: 0.2s ease-in-out;
-}
-
+/* =========================
+   ACCIONES
+========================= */
 .acciones {
   display: flex;
   flex-direction: column;
