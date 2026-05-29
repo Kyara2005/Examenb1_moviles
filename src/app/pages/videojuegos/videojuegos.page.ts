@@ -22,8 +22,10 @@ import { CommonModule } from '@angular/common';
 export class VideojuegosPage {
 
   mensajeExito = '';
+  mensajeError = '';
   fotoPreview: string | null = null;  // vista previa de la foto
   fotoFile: File | null = null;       // archivo para subir
+  enviando = false; // evita doble envío
 
   constructor(private router: Router, private firebaseService: FirebaseService, private videojuegosService: VideojuegosService) {}
 
@@ -76,6 +78,11 @@ export class VideojuegosPage {
   }
 
   async enviarEncuesta() {
+    if (this.enviando) return;
+    this.enviando = true;
+    this.mensajeError = '';
+    this.mensajeExito = '';
+    
     try {
 
       // 🔥 1. GPS en el momento del click
@@ -118,9 +125,12 @@ export class VideojuegosPage {
       this.fotoPreview = null;
       this.fotoFile = null;
 
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error al enviar la encuesta');
+    } catch (error: any) {
+      console.error('Error al enviar encuesta:', error);
+      this.mensajeError = '❌ Error al enviar. Intenta de nuevo.';
+      setTimeout(() => this.mensajeError = '', 4000);
+    } finally {
+      this.enviando = false;
     }
   }
 

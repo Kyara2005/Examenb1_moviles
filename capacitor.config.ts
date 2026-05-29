@@ -4,6 +4,9 @@ const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'videojuegos-crud',
   webDir: 'www',
+  server: {
+    androidScheme: 'https'  // 👈 importante
+  },
   plugins: {
   SplashScreen: {
     launchShowDuration: 500,
