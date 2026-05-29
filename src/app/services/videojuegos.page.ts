@@ -10,6 +10,8 @@ export interface Encuesta {
   plataforma: string;
   genero: string;
   comentario: string;
+  lugar: string;
+  foto?: string | null; 
   latitud: number;
   longitud: number;
   fecha: string;
@@ -95,31 +97,21 @@ export class VideojuegosService {
     return data.publicUrl;
   }
 
-
-  // SUBIR AUDIO
-  async subirAudio(file: File): Promise<string> {
-
-    const nombreArchivo =
-      `${Date.now()}_${file.name}`;
-
-    const { error } = await this.supabase.storage
-      .from('audios')
-      .upload(nombreArchivo, file);
-
-    if (error) throw error;
-
-    const { data } = this.supabase.storage
-      .from('audios')
-      .getPublicUrl(nombreArchivo);
-
-    return data.publicUrl;
-  }
-
   async crearEncuesta(encuesta: Encuesta) {
     const { data, error } = await this.supabase
       .from('encuestas')
       .insert(encuesta)
       .select();
+
+    if (error) throw error;
+    return data;
+  }
+
+  async listarEncuestas() {
+    const { data, error } = await this.supabase
+      .from('encuestas')
+      .select('*')
+      .order('id', { ascending: false });
 
     if (error) throw error;
     return data;

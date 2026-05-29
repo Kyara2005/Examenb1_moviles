@@ -4,6 +4,7 @@
 ion-content {
   --background: #121212;
   color: #ffffff;
+  
 }
 
 /* =========================
@@ -77,33 +78,36 @@ ion-button {
   font-weight: bold;
 }
 
-/* eliminar */
-ion-button[color="danger"] {
-  --background: #e53935;
-  --color: white;
-}
-
-/* warning */
-ion-button[color="warning"] {
-  --background: #ffb300;
-  --color: #000;
-}
-
 /* =========================
-   FAB
+   MENSAJE DE ÉXITO
 ========================= */
-ion-fab-button {
-  --background: linear-gradient(135deg, #00c6ff, #0072ff);
-  width: 60px;
-  height: 60px;
-  font-size: 1.8rem;
+.mensaje-exito {
+  background: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
 }
 
-/* =========================
-   ACCIONES
-========================= */
-.acciones {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+// Ahora estilos para el modo dark
+@media (prefers-color-scheme: dark) {
+  ion-content {
+    --background: #121212;
+    color: #ffffff;
+  }
+
+  ion-item {
+    --background: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  ion-label h2 {
+    color: #ffffff;
+  }
+
+  ion-label p {
+    color: #b0b0b0;
+  }
 }

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registros ({{ encuestas.length }})</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="refrescar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-spinner *ngIf="loading" style="display:block; margin:40px auto;"></ion-spinner>
+
+  <ion-card *ngFor="let e of encuestas">
+
+    <!-- Foto -->
+    <img *ngIf="e.foto_url" [src]="e.foto_url"
+    style="width:100%; max-height:200px; object-fit:cover;" />
+
+    <ion-card-header>
+      <ion-card-title>🎮 {{ e.videojuego }}</ion-card-title>
+      <ion-card-subtitle>
+        👤 {{ e.nombre }} &nbsp;|&nbsp;
+        <ion-badge color="primary">{{ e.rol }}</ion-badge>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <p>🕹️ <strong>Plataforma:</strong> {{ e.plataforma }}</p>
+      <p>🎯 <strong>Género:</strong> {{ e.genero }}</p>
+      <p *ngIf="e.lugar">📍 <strong>Lugar:</strong> {{ e.lugar }}</p>
+      <p *ngIf="e.comentario">💬 {{ e.comentario }}</p>
+
+      <div style="margin-top:8px; font-size:0.85em; color:var(--ion-color-medium);">
+        📅 {{ e.fecha }} {{ e.hora }}
+        <span *ngIf="e.latitud">
+          &nbsp;| 🌐 {{ e.latitud | number:'1.4-4' }}, {{ e.longitud | number:'1.4-4' }}
+        </span>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <p *ngIf="!loading && encuestas.length === 0"
+    style="text-align:center; margin-top:40px; color:var(--ion-color-medium);">
+    No hay registros aún.
+  </p>
+
+</ion-content>

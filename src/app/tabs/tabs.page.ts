@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { gameControllerOutline, filmOutline, cameraOutline } from 'ionicons/icons';
+import { gameControllerOutline, listOutline, cameraOutline } from 'ionicons/icons';
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.page.html',
@@ -16,7 +16,7 @@ export class TabsPage implements OnInit {
   constructor() { 
     addIcons({
       'game-controller-outline': gameControllerOutline,
-      'film-outline': filmOutline,
+      'list-outline': listOutline,
       'camera-outline': cameraOutline
     });
   }

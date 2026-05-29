@@ -41,7 +41,7 @@ export const routes: Routes = [
       },
       {
         path: 'tab2',
-        loadComponent: () => import('./tab2/tab2.page').then( m => m.Tab2Page)
+        loadComponent: () => import('./pages/registros/registros.page').then( m => m.RegistrosPage)
       },
       {
         path: 'tab3',
@@ -53,5 +53,10 @@ export const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'registros',
+    loadComponent: () => import('./pages/registros/registros.page').then( m => m.RegistrosPage)
   }
+
 ];

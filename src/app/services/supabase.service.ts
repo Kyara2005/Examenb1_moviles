@@ -9,13 +9,6 @@ export class SupabaseService {
     // Para la base de datos
     public supabaseDB: SupabaseClient = createClient(
         environment.supabaseUrl,
-        environment.supabaseKey,
-        {
-            auth: {
-                storageKey: 'supabase-db-client',
-                // persistSession: false, // no guarda sesión, no necesita lock
-                // autoRefreshToken: false // no refresca token, no necesita lock
-            }
-        }
+        environment.supabaseKey
     );
 }
