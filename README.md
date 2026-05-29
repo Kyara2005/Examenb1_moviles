@@ -1,8 +1,8 @@
 <img width="1281" height="350" alt="image" src="https://github.com/user-attachments/assets/a3202cbc-0354-4611-bfbd-8001ef5228b7" />
 
-** EXAMEN MOVILES
+** EXAMEN MOVILES**
 
-* Integrantes: Kyara Altamirano y Santiago Vargas
+* Integrantes: Kyara Altamirano y Santiago Vargas*
 
 *App instalandose
 
