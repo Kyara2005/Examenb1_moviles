@@ -8,6 +8,12 @@ Kyara Altamirano
 
 Santiago Vargas
 
+
+LINK VIDEO EVIDENCIA
+
+https://drive.google.com/file/d/1zVuy3pEvmeEusEA4NjdYKzxCT6ZrZG3O/view?usp=drivesdk
+
+
 🚀 Instalación de la App
 
 
@@ -74,7 +80,4 @@ Configuración e integración de Firebase en el proyecto.
 <img width="720" height="1650" alt="image" src="https://github.com/user-attachments/assets/997b5320-7db8-4d00-8097-1d6d4d88923d" />
 <img width="720" height="1650" alt="image" src="https://github.com/user-attachments/assets/8948fff1-a23b-4cc7-8fcc-89c14af0bdbb" />
 
-LINK VIDEO EVIDENCIA
-
-https://drive.google.com/file/d/1zVuy3pEvmeEusEA4NjdYKzxCT6ZrZG3O/view?usp=drivesdk
 
