@@ -13,6 +13,12 @@ LINK VIDEO EVIDENCIA
 
 https://drive.google.com/file/d/1zVuy3pEvmeEusEA4NjdYKzxCT6ZrZG3O/view?usp=drivesdk
 
+LINK QR PARA DESCARGAR APP
+https://encuestas-750ad.web.app/bienvenida
+
+LINK PARA VISUALIZAR DASHBOARD
+https://encuestas-750ad.web.app/dashboard.html
+
 
 🚀 Instalación de la App
 
