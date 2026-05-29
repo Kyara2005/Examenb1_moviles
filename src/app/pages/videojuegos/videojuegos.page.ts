@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent,
-  IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton
+  IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton, IonSelect, IonSelectOption, IonLabel
 } from '@ionic/angular/standalone';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { FirebaseService } from '../../services/firebase.service';
+import { VideojuegosService } from '../../services/videojuegos.page';
 
 @Component({
   selector: 'app-videojuegos',
@@ -15,13 +16,15 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./videojuegos.page.scss'],
   imports: [
     FormsModule,
-    IonHeader, IonToolbar, IonTitle, IonContent, RouterLink,
-    IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton
+    IonHeader, IonToolbar, IonTitle, IonContent,
+    IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton, IonSelect, IonSelectOption, IonLabel
   ]
 })
 export class VideojuegosPage {
 
-  constructor(private router: Router, private firebaseService: FirebaseService) {}
+  mensajeExito = '';
+
+  constructor(private router: Router, private firebaseService: FirebaseService, private videojuegosService: VideojuegosService) {}
 
   encuesta = {
     nombre: '',
@@ -37,7 +40,10 @@ export class VideojuegosPage {
     try {
 
       // 🔥 1. GPS en el momento del click
-      const pos = await Geolocation.getCurrentPosition();
+      const pos = await Geolocation.getCurrentPosition({
+        enableHighAccuracy: false, // false es más rápido
+        timeout: 10000,            // 10 segundos de espera
+      });
 
       const latitud = pos.coords.latitude;
       const longitud = pos.coords.longitude;
@@ -53,17 +59,20 @@ export class VideojuegosPage {
         fecha: ahora.toLocaleDateString(),
         hora: ahora.toLocaleTimeString()
       };
+      await this.videojuegosService.crearEncuesta(datos); // 👈 guarda en Supabase
 
-      console.log('ENCUESTA GUARDADA:', datos);
+      this.mensajeExito = 'Encuesta enviada correctamente';
+      setTimeout(() => this.mensajeExito = '', 3000);
 
-      // 🔥 4. AQUÍ GUARDAS EN TU BD
-      // await this.servicio.crear(datos);
-
-      alert('Encuesta enviada correctamente con ubicación');
+      // Limpiar formulario
+      this.encuesta = {
+        nombre: '', edad: '', rol: '',
+        videojuego: '', plataforma: '', genero: '', comentario: ''
+      };
 
     } catch (error) {
-      console.error('Error GPS:', error);
-      alert('No se pudo obtener la ubicación');
+      console.error('Error:', error);
+      alert('Error al enviar la encuesta');
     }
   }
 

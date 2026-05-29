@@ -25,7 +25,13 @@
     </ion-item>
 
     <ion-item>
-      <ion-input label="Rol" [(ngModel)]="encuesta.rol"></ion-input>
+      <ion-label>Rol</ion-label>
+      <ion-select [(ngModel)]="encuesta.rol" placeholder="Selecciona un rol">
+        <ion-select-option value="estudiante">Estudiante</ion-select-option>
+        <ion-select-option value="docente">Docente</ion-select-option>
+        <ion-select-option value="administrativo">Administrativo</ion-select-option>
+        <ion-select-option value="visitante">Visitante</ion-select-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>

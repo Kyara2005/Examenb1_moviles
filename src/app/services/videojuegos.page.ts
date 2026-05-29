@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import {SupabaseService} from './supabase.service';
 
-export interface Videojuego {
-  id?: number;
-  titulo: string;
-  portada: string;
-  imagen?: string;
-  audio?: string;
-  categoria?: string;
-  descripcion?: string;
-  link_referencia?: string;
+export interface Encuesta {
+  nombre: string;
+  edad: string;
+  rol: string;
+  videojuego: string;
+  plataforma: string;
+  genero: string;
+  comentario: string;
+  latitud: number;
+  longitud: number;
+  fecha: string;
+  hora: string;
 }
 
 @Injectable({
@@ -26,39 +29,39 @@ export class VideojuegosService {
 
   async listar() {
     const { data, error } = await this.supabase
-      .from('series')
+      .from('encuestas')
       .select('*')
       .order('id', { ascending: false });
 
     if (error) throw error;
-    return data as Videojuego[];
+    return data as Encuesta[];
   }
 
   async obtenerPorId(id: number) {
     const { data, error } = await this.supabase
-      .from('series')
+      .from('encuestas')
       .select('*')
       .eq('id', id)
       .single();
 
     if (error) throw error;
-    return data as Videojuego;
+    return data as Encuesta;
   }
 
-  async crear(series: Videojuego) {
+  async crear(encuesta: Encuesta) {
     const { data, error } = await this.supabase
-      .from('series')
-      .insert(series)
+      .from('encuestas')
+      .insert(encuesta)
       .select();
 
     if (error) throw error;
     return data;
   }
 
-  async actualizar(id: number, series: Videojuego) {
+  async actualizar(id: number, encuesta: Encuesta) {
     const { data, error } = await this.supabase
-      .from('series')
-      .update(series)
+      .from('encuestas')
+      .update(encuesta)
       .eq('id', id)
       .select();
 
@@ -68,7 +71,7 @@ export class VideojuegosService {
 
   async eliminar(id: number) {
     const { error } = await this.supabase
-      .from('series')
+      .from('encuestas')
       .delete()
       .eq('id', id);
 
@@ -110,5 +113,15 @@ export class VideojuegosService {
       .getPublicUrl(nombreArchivo);
 
     return data.publicUrl;
+  }
+
+  async crearEncuesta(encuesta: Encuesta) {
+    const { data, error } = await this.supabase
+      .from('encuestas')
+      .insert(encuesta)
+      .select();
+
+    if (error) throw error;
+    return data;
   }
 }

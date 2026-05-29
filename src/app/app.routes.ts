@@ -23,16 +23,16 @@ export const routes: Routes = [
             loadComponent: () => import('./pages/videojuegos/videojuegos.page')
             .then(m => m.VideojuegosPage)
           },
-          {
-            path: 'videojuego-form',
-            loadComponent: () => import('./pages/videojuego-form/videojuego-form.page')
-            .then(m => m.VideojuegoFormPage)
-          },
-          {
-            path: 'videojuego-form/:id',
-            loadComponent: () => import('./pages/videojuego-form/videojuego-form.page')
-            .then(m => m.VideojuegoFormPage)
-          },
+          // {
+          //   path: 'videojuego-form',
+          //   loadComponent: () => import('./pages/videojuego-form/videojuego-form.page')
+          //   .then(m => m.VideojuegoFormPage)
+          // },
+          // {
+          //   path: 'videojuego-form/:id',
+          //   loadComponent: () => import('./pages/videojuego-form/videojuego-form.page')
+          //   .then(m => m.VideojuegoFormPage)
+          // },
           {
             path: 'apilibros',
             loadComponent: () => import('./apilibros/apilibros.page').then( m => m.ApilibrosPage)
