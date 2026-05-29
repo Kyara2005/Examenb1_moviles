@@ -3,12 +3,17 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'bienvenida',  // 👈 antes decía 'login'
     pathMatch: 'full'
   },
   {
+    path: 'bienvenida',
+    loadComponent: () => import('./pages/bienvenida/bienvenida.page')
+      .then(m => m.BienvenidaPage)
+  },
+  {
     path: 'login',
-    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+    loadComponent: () => import('./login/login.page').then(m => m.LoginPage)
   },
   {
     path: 'tabs',
@@ -57,11 +62,6 @@ export const routes: Routes = [
   {
     path: 'registros',
     loadComponent: () => import('./pages/registros/registros.page').then( m => m.RegistrosPage)
-  },
-  {
-    path: 'bienvenida',
-    loadComponent: () => import('./pages/bienvenida/bienvenida.page').then( m => m.BienvenidaPage)
   }
-
 
 ];

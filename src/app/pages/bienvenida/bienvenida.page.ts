@@ -23,7 +23,7 @@ export class BienvenidaPage implements OnInit {
   @ViewChild('qrCanvas', { static: true }) qrCanvas!: ElementRef;
 
   // Cambia esta URL por la de tu APK en GitHub o la URL de tu app
-  urlDescarga = 'https://github.com/TU_USUARIO/TU_REPO/releases';
+  urlDescarga = 'https://github.com/Kyara2005/Examenb1_moviles/releases/tag/v1.0.0-beta';
 
   constructor(private router: Router) {}
 
