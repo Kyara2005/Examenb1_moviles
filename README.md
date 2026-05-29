@@ -1,10 +1,16 @@
 <img width="1281" height="350" alt="image" src="https://github.com/user-attachments/assets/a3202cbc-0354-4611-bfbd-8001ef5228b7" />
 
 📱 EXAMEN MÓVILES
+
 👥 Integrantes
+
 Kyara Altamirano
+
 Santiago Vargas
+
 🚀 Instalación de la App
+
+
 
 La aplicación se instala correctamente en el dispositivo móvil.
 
