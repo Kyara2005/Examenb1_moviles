@@ -116,4 +116,15 @@ export class VideojuegosService {
     if (error) throw error;
     return data;
   }
+
+  async listarFotos() {
+    const { data, error } = await this.supabase
+      .from('encuestas')
+      .select('foto, nombre, videojuego, lugar, fecha')
+      .not('foto', 'is', null)
+      .order('id', { ascending: false });
+
+    if (error) throw error;
+    return data;
+  }
 }

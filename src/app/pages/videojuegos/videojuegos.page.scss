@@ -1,113 +1,231 @@
-/* =========================
-   FONDO GENERAL
-========================= */
-ion-content {
-  --background: #121212;
-  color: #ffffff;
-  
+/* Fondo */
+.contenido-formulario {
+  --background: linear-gradient(180deg, #121212, #1a1a2e);
+  color: white;
+}
+
+/* Toolbar */
+.toolbar-custom {
+  --background: linear-gradient(90deg, #6a11cb, #2575fc);
+  --color: white;
+
+  ion-title {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+/* Contenedor */
+.container-form {
+  max-width: 700px;
+  margin: auto;
+  padding: 16px;
+}
+
+/* Header */
+.header-form {
+  text-align: center;
+  margin-bottom: 24px;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: white;
+  }
+
+  p {
+    color: #bbbbbb;
+    font-size: 0.95rem;
+  }
+}
+
+/* Lista */
+.form-list {
+  background: transparent;
+
+  ion-item {
+    --background: #1f1f1f;
+    --border-radius: 14px;
+    margin-bottom: 14px;
+    --padding-start: 12px;
+    --inner-padding-end: 12px;
+    color: white;
+  }
+
+  ion-input,
+  ion-textarea,
+  ion-select,
+  ion-label {
+    color: white;
+  }
+}
+
+/* Botones foto */
+.botones-foto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.btn-camera,
+.btn-gallery {
+  --border-radius: 14px;
+  height: 48px;
+  font-weight: bold;
+}
+
+/* Preview */
+.preview-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.preview-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+}
+
+/* Mensaje */
+.mensaje-exito {
+  background: rgba(46, 204, 113, 0.15);
+  border: 1px solid #2ecc71;
+  color: #2ecc71;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Botón enviar */
+.btn-enviar {
+  --background: linear-gradient(90deg, #6a11cb, #2575fc);
+  --border-radius: 16px;
+  height: 52px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Logout */
+.btn-logout {
+  font-size: 0.85rem;
 }
 
 /* =========================
-   TOOLBAR
+   MODO OSCURO (default)
 ========================= */
-ion-toolbar {
+
+.contenido-formulario {
+  --background: linear-gradient(180deg, #121212, #1a1a2e);
+  color: white;
+}
+
+.toolbar-custom {
   --background: linear-gradient(90deg, #6a11cb, #2575fc);
   --color: white;
 }
 
-ion-title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.4rem;
-}
-
-/* =========================
-   ITEM (CARD VIDEOJUEGOS)
-========================= */
-ion-item {
-  margin-bottom: 16px;
-  border-radius: 16px;
-  --background: #f7f2f2;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  padding: 10px;
-  align-items: center;
-  transition: 0.2s ease-in-out;
-}
-
-/* hover */
-ion-item:hover {
-  transform: scale(1.02);
-}
-
-/* =========================
-   TEXTO
-========================= */
-ion-label h2 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-ion-label p {
-  color: #b0b0b0;
-  margin: 4px 0;
-  font-size: 0.9rem;
-}
-
-/* =========================
-   IMAGEN
-========================= */
-ion-label img {
-  display: block;
-  margin-top: 10px;
-  border-radius: 12px;
-  border: 2px solid #333;
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-}
-
-/* =========================
-   BOTONES
-========================= */
-ion-button {
-  margin-top: 8px;
-  margin-left: 6px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-/* =========================
-   MENSAJE DE ÉXITO
-========================= */
-.mensaje-exito {
-  background: #4caf50;
+.form-list ion-item {
+  --background: #1f1f1f;
   color: white;
-  padding: 10px;
-  margin: 15px;
-  border-radius: 10px;
-  text-align: center;
-  font-weight: bold;
 }
 
-// Ahora estilos para el modo dark
-@media (prefers-color-scheme: dark) {
-  ion-content {
-    --background: #121212;
-    color: #ffffff;
+.form-list ion-input,
+.form-list ion-textarea,
+.form-list ion-select,
+.form-list ion-label {
+  color: white;
+}
+
+.header-form h1 {
+  color: white;
+}
+
+.header-form p {
+  color: #bbbbbb;
+}
+
+
+/* =========================
+   MODO CLARO
+========================= */
+
+@media (prefers-color-scheme: light) {
+
+  .contenido-formulario {
+    --background: linear-gradient(180deg, #f4f5f8, #ffffff);
+    color: #111;
   }
 
-  ion-item {
-    --background: #1e1e1e;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  .toolbar-custom {
+    --background: linear-gradient(90deg, #4facfe, #00f2fe);
+    --color: #111;
   }
 
-  ion-label h2 {
-    color: #ffffff;
+  .form-list ion-item {
+    --background: #ffffff;
+    color: #111;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
   }
 
-  ion-label p {
-    color: #b0b0b0;
+  .form-list ion-input,
+  .form-list ion-textarea,
+  .form-list ion-select,
+  .form-list ion-label {
+    color: #111;
+  }
+
+  .header-form h1 {
+    color: #111;
+  }
+
+  .header-form p {
+    color: #555;
+  }
+
+  .mensaje-exito {
+    background: rgba(46, 204, 113, 0.12);
+  }
+
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  .header-form h1 {
+    font-size: 1.6rem;
+  }
+
+  .botones-foto {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-img {
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .container-form {
+    padding: 12px;
+  }
+
+  .header-form h1 {
+    font-size: 1.4rem;
+  }
+
+  .header-form p {
+    font-size: 0.85rem;
+  }
+
+  ion-title {
+    font-size: 1rem;
   }
 }

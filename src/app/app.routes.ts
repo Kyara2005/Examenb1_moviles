@@ -45,7 +45,7 @@ export const routes: Routes = [
       },
       {
         path: 'tab3',
-        loadComponent: () => import('./tab3/tab3.page').then( m => m.Tab3Page)
+        loadComponent: () => import('./tab3/tab3.page').then( m => m.GaleriaPage)
       },
       {
         path: '',
@@ -57,6 +57,11 @@ export const routes: Routes = [
   {
     path: 'registros',
     loadComponent: () => import('./pages/registros/registros.page').then( m => m.RegistrosPage)
+  },
+  {
+    path: 'bienvenida',
+    loadComponent: () => import('./pages/bienvenida/bienvenida.page').then( m => m.BienvenidaPage)
   }
+
 
 ];

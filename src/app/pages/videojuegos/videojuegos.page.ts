@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton, IonSelect, IonSelectOption, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton, IonSelect, IonSelectOption, IonLabel, IonButtons } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { Geolocation } from '@capacitor/geolocation';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     FormsModule,
     IonHeader, IonToolbar, IonTitle, IonContent,
-    IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton, IonSelect, IonSelectOption, IonLabel, CommonModule
+    IonList, IonItem, IonInput, IonButton, IonTextarea, IonBackButton, IonSelect, IonSelectOption, IonLabel, IonButtons, CommonModule
 ]
 })
 export class VideojuegosPage {

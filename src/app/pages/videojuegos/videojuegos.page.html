@@ -1,89 +1,98 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="toolbar-custom">
     <ion-title>Encuesta de Videojuegos</ion-title>
 
-    <ion-button slot="start">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/tabs/tab1/apilibros"></ion-back-button>
-    </ion-button>
+    </ion-buttons>
 
-    <ion-button slot="end" (click)="cerrarSesion()">
-      Cerrar sesión
-    </ion-button>
+    <ion-buttons slot="end">
+      <ion-button class="btn-logout" (click)="cerrarSesion()">
+        Cerrar sesión
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-
-  <ion-list>
-
-    <ion-item>
-      <ion-input label="Nombre o alias" [(ngModel)]="encuesta.nombre"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="number" label="Edad" [(ngModel)]="encuesta.edad"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Rol</ion-label>
-      <ion-select [(ngModel)]="encuesta.rol" placeholder="Selecciona un rol">
-        <ion-select-option value="estudiante">Estudiante</ion-select-option>
-        <ion-select-option value="docente">Docente</ion-select-option>
-        <ion-select-option value="administrativo">Administrativo</ion-select-option>
-        <ion-select-option value="visitante">Visitante</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Videojuego favorito" [(ngModel)]="encuesta.videojuego"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Plataforma" [(ngModel)]="encuesta.plataforma"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Género favorito" [(ngModel)]="encuesta.genero"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-textarea label="Comentario" [(ngModel)]="encuesta.comentario"></ion-textarea>
-    </ion-item>
-
-      <!-- Lugar del campus -->
-    <ion-item>
-      <ion-label>Lugar</ion-label>
-      <ion-select [(ngModel)]="encuesta.lugar" placeholder="Selecciona un lugar">
-        <ion-select-option value="biblioteca">Biblioteca</ion-select-option>
-        <ion-select-option value="cafeteria">Cafetería</ion-select-option>
-        <ion-select-option value="patio_central">Patio central</ion-select-option>
-        <ion-select-option value="laboratorio">Laboratorio</ion-select-option>
-        <ion-select-option value="entrada_principal">Entrada principal</ion-select-option>
-        <ion-select-option value="otro">Otro</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-      <!-- Botones de cámara -->
-    <div style="display:flex; gap:8px; margin: 12px 0;">
-      <ion-button expand="block" fill="outline" (click)="tomarFoto()">
-        📷 Tomar foto
-      </ion-button>
-      <ion-button expand="block" fill="outline" (click)="seleccionarGaleria()">
-        🖼️ Galería
-      </ion-button>
-    </div>
-    <div *ngIf="fotoPreview" style="text-align:center; margin-bottom:12px;">
-      <img [src]="fotoPreview" alt="Foto seleccionada" style="max-width:100%; border-radius:8px;max-height:200px; object-fit:cover;">
+<ion-content class="contenido-formulario">
+  <div class="container-form">
+  <!-- Título -->
+    <div class="header-form">
+      <h1>🎮 Encuesta de Videojuegos</h1>
+      <p>Comparte tus gustos gamer y sube una evidencia 📸</p>
     </div>
 
-  </ion-list>
+    <ion-list class="form-list">
 
-  <div *ngIf="mensajeExito" class="mensaje-exito">
-    {{ mensajeExito }}
+      <ion-item>
+        <ion-input label="Nombre o alias" labelPlacement="stacked" placeholder="Ingresa tu nombre" [(ngModel)]="encuesta.nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="number" label="Edad" labelPlacement="stacked" placeholder="Ingresa tu edad" [(ngModel)]="encuesta.edad"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Rol</ion-label>
+        <ion-select [(ngModel)]="encuesta.rol" placeholder="Selecciona un rol">
+          <ion-select-option value="estudiante">Estudiante</ion-select-option>
+          <ion-select-option value="docente">Docente</ion-select-option>
+          <ion-select-option value="administrativo">Administrativo</ion-select-option>
+          <ion-select-option value="visitante">Visitante</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Videojuego favorito" labelPlacement="stacked" placeholder="Ingresa tu videojuego favorito" [(ngModel)]="encuesta.videojuego"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Plataforma" labelPlacement="stacked" placeholder="PC, PS5, Xbox..." [(ngModel)]="encuesta.plataforma"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Género favorito" labelPlacement="stacked" placeholder="Acción, RPG..." [(ngModel)]="encuesta.genero"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea label="Comentario" labelPlacement="stacked" placeholder="Ingresa tu comentario" [(ngModel)]="encuesta.comentario"></ion-textarea>
+      </ion-item>
+
+        <!-- Lugar del campus -->
+      <ion-item>
+        <ion-label position="stacked">Lugar</ion-label>
+        <ion-select [(ngModel)]="encuesta.lugar" placeholder="Selecciona un lugar">
+          <ion-select-option value="biblioteca">Biblioteca</ion-select-option>
+          <ion-select-option value="cafeteria">Cafetería</ion-select-option>
+          <ion-select-option value="patio_central">Patio central</ion-select-option>
+          <ion-select-option value="laboratorio">Laboratorio</ion-select-option>
+          <ion-select-option value="entrada_principal">Entrada principal</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+        <!-- Botones de cámara -->
+        <div class="botones-foto">
+          <ion-button expand="block" fill="outline" class="btn-camera" (click)="tomarFoto()">
+            📷 Tomar foto
+          </ion-button>
+        
+          <ion-button expand="block" fill="outline" class="btn-gallery" (click)="seleccionarGaleria()">
+            🖼️ Galería
+          </ion-button>
+        </div>
+      <div *ngIf="fotoPreview" class="preview-container">
+        <img [src]="fotoPreview" alt="Foto seleccionada" class="preview-img";>
+      </div>
+
+    </ion-list>
+
+    <div *ngIf="mensajeExito" class="mensaje-exito">
+      {{ mensajeExito }}
+    </div>
+
+    <ion-button expand="block" class="btn-enviar" (click)="enviarEncuesta()">
+      Enviar Encuesta
+    </ion-button>
   </div>
-
-  <ion-button expand="block" color="primary" (click)="enviarEncuesta()">
-    Enviar Encuesta
-  </ion-button>
-
 </ion-content>
