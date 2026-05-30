@@ -13,6 +13,8 @@ LINK VIDEO EVIDENCIA
 
 https://drive.google.com/file/d/1zVuy3pEvmeEusEA4NjdYKzxCT6ZrZG3O/view?usp=drivesdk
 
+https://youtu.be/gbuQnh7G6aE?si=wm0MR3uZYNcrYYsu
+
 LINK QR PARA DESCARGAR APP
 https://encuestas-750ad.web.app/bienvenida
 
